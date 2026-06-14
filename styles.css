@@ -35,9 +35,9 @@ a {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 24px;
-  min-height: 76px;
-  padding: 14px clamp(18px, 5vw, 64px);
+  gap: 18px;
+  min-height: 58px;
+  padding: 9px clamp(16px, 5vw, 52px);
   background: rgba(251, 252, 248, 0.94);
   border-bottom: 1px solid var(--line);
   backdrop-filter: blur(14px);
@@ -51,20 +51,21 @@ a {
 
 .brand {
   gap: 10px;
+  font-size: 0.92rem;
   font-weight: 800;
   letter-spacing: 0;
 }
 
 .brand-logo {
-  width: 38px;
-  height: 38px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   object-fit: cover;
 }
 
 .nav-links {
-  gap: clamp(12px, 3vw, 30px);
-  font-size: 0.9rem;
+  gap: clamp(10px, 2.4vw, 22px);
+  font-size: 0.84rem;
   font-weight: 700;
 }
 
@@ -98,14 +99,16 @@ a {
 }
 
 .button-small {
-  min-height: 42px;
-  padding-inline: 18px;
+  min-height: 34px;
+  padding-inline: 14px;
+  font-size: 0.84rem;
 }
 
 .button-large {
   min-height: 54px;
   padding-inline: 30px;
   font-size: 0.98rem;
+  font-weight: 400;
 }
 
 .button-black {
@@ -215,7 +218,8 @@ input:focus {
 .hero-content {
   position: relative;
   z-index: 1;
-  max-width: 760px;
+  width: min(1100px, 100%);
+  max-width: 1100px;
   display: grid;
   justify-items: center;
 }
@@ -245,10 +249,11 @@ p {
 
 h1 {
   margin: 0;
-  font-size: clamp(2rem, 4.6vw, 3.85rem);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+  font-size: clamp(1.52rem, 3.36vw, 2.84rem);
   line-height: 1.16;
   padding-bottom: 0.08em;
-  font-weight: 800;
+  font-weight: 400;
   background: linear-gradient(90deg, #111111 40%, #004aad 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -269,7 +274,7 @@ h1 span {
 }
 
 .process-graphic {
-  width: min(850px, 100%);
+  width: min(550px, 100%);
   margin: 34px auto 0;
   display: block;
 }
@@ -280,7 +285,52 @@ h1 span {
   gap: 12px;
 }
 
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 22px;
+  margin-top: 34px;
+}
+
+.social-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #004aad;
+  font-size: 28px;
+  transition: color 0.2s ease;
+}
+
+.social-links a:hover {
+  color: #002f7a;
+}
+
+@property --float-y {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 0px;
+}
+
+@property --pill-scale {
+  syntax: "<number>";
+  inherits: false;
+  initial-value: 1;
+}
+
+@keyframes pillFloat {
+  0%,
+  100% {
+    --float-y: 0px;
+  }
+
+  50% {
+    --float-y: -8px;
+  }
+}
+
 .feature-pill {
+  --float-y: 0px;
+  --pill-scale: 1;
   position: absolute;
   z-index: 0;
   padding: 10px 16px;
@@ -288,11 +338,13 @@ h1 span {
   font-size: 0.86rem;
   font-weight: 800;
   box-shadow: 0 12px 30px rgba(16, 24, 39, 0.08);
-  transition: transform 0.2s ease, background-color 0.2s ease;
+  transform: translateY(var(--float-y)) scale(var(--pill-scale));
+  animation: pillFloat 3s ease-in-out infinite;
+  transition: --pill-scale 0.2s ease, background-color 0.2s ease;
 }
 
 .feature-pill:hover {
-  transform: scale(1.05);
+  --pill-scale: 1.05;
 }
 
 .pill-pink {
@@ -300,6 +352,7 @@ h1 span {
   left: 12%;
   color: #b42364;
   background: #ffe4ef;
+  animation-delay: 0s;
 }
 
 .pill-pink:hover {
@@ -311,6 +364,7 @@ h1 span {
   left: 10%;
   color: #147d52;
   background: #dff8ea;
+  animation-delay: 0.4s;
 }
 
 .pill-green:hover {
@@ -322,6 +376,7 @@ h1 span {
   right: 10%;
   color: #175cd3;
   background: #dbeafe;
+  animation-delay: 0.8s;
 }
 
 .pill-blue:hover {
@@ -333,6 +388,7 @@ h1 span {
   bottom: 22%;
   color: #b54708;
   background: #ffead5;
+  animation-delay: 1.2s;
 }
 
 .pill-orange:hover {
@@ -392,9 +448,74 @@ h1 span {
   padding-bottom: 54px;
 }
 
+.centered-page-hero {
+  margin: 0 auto;
+  text-align: center;
+}
+
 .page-hero h1 {
   margin-bottom: 24px;
   font-size: clamp(2rem, 5vw, 3.4rem);
+}
+
+.founders-section {
+  padding-top: 56px;
+  text-align: center;
+  border-top: 1px solid var(--line);
+}
+
+.founders-section h2 {
+  margin: 0 0 36px;
+  color: var(--ink);
+  font-size: clamp(1.8rem, 4vw, 2.7rem);
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+.founders-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.founder-card {
+  padding: 2rem;
+  text-align: center;
+  background: #e6eef8;
+  border-radius: 16px;
+}
+
+.founder-headshot {
+  display: block;
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 1rem auto;
+  border: 3px solid #004aad;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.founder-card h3 {
+  margin: 0 0 0.25rem;
+  color: #004aad;
+  font-size: 1.2rem;
+  font-weight: 800;
+}
+
+.founder-program {
+  margin: 0 0 1rem;
+  color: #666666;
+  font-size: 0.85rem;
+  line-height: 1.45;
+}
+
+.founder-card p:not(.founder-program) {
+  margin: 0;
+  color: var(--ink);
+  font-size: 0.95rem;
+  line-height: 1.65;
 }
 
 .text-section {
@@ -441,7 +562,8 @@ h1 span {
   }
 
   .home-band,
-  .split {
+  .split,
+  .founders-grid {
     grid-template-columns: 1fr;
   }
 
