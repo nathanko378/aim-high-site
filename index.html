@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aim High Tutoring</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Aim High Tutoring home">
+      <img class="brand-logo" src="assets/logo.png" alt="">
+      <span>Aim High Tutoring</span>
+    </a>
+
+    <nav class="nav-links" aria-label="Main navigation">
+      <a href="who-we-are.html">Who We Are</a>
+      <a href="our-philosophy.html">Our Philosophy</a>
+      <div class="dropdown-wrap">
+        <button class="button button-small" type="button" data-open-form>Get Started</button>
+        <div class="dropdown-form" data-form-panel>
+          <form class="lead-form">
+            <label>
+              Name
+              <input type="text" name="name" autocomplete="name" required>
+            </label>
+            <label>
+              Phone Number
+              <input type="tel" name="phone" autocomplete="tel" required>
+            </label>
+            <button class="button" type="submit">Submit</button>
+          </form>
+          <p class="form-message" role="status" aria-live="polite"></p>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="feature-pill pill-pink">Personalized lessons</div>
+      <div class="feature-pill pill-green">Proven results</div>
+      <div class="feature-pill pill-blue">High-impact tutoring</div>
+      <div class="feature-pill pill-orange">Flexible scheduling</div>
+
+      <div class="hero-content">
+        <img class="hero-icon" src="assets/logo.png" alt="">
+        <h1>Aim High <span>Tutoring</span></h1>
+        <p class="hero-copy">
+          Helping students excel in math through personalized,<br>
+          high-impact tutoring.
+        </p>
+        <div class="hero-actions">
+          <div class="dropdown-wrap hero-dropdown">
+            <button class="button button-large button-black" type="button" data-open-form>Get Started</button>
+            <div class="dropdown-form" data-form-panel>
+              <form class="lead-form">
+                <label>
+                  Name
+                  <input type="text" name="name" autocomplete="name" required>
+                </label>
+                <label>
+                  Phone Number
+                  <input type="tel" name="phone" autocomplete="tel" required>
+                </label>
+                <button class="button button-black" type="submit">Submit</button>
+              </form>
+              <p class="form-message" role="status" aria-live="polite"></p>
+            </div>
+          </div>
+          <a class="button button-large button-outline" href="who-we-are.html">Who We Are</a>
+        </div>
+        <img class="process-graphic" src="assets/aim-high-process.svg" alt="Process for starting tutoring">
+      </div>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
