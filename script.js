@@ -53,3 +53,61 @@ forms.forEach((form) => {
     }
   });
 });
+
+const testimonialForm = document.querySelector("[data-testimonial-form]");
+const testimonialList = document.querySelector("[data-testimonial-list]");
+const testimonialStorageKey = "aimHighTestimonials";
+
+function getTestimonials() {
+  try {
+    return JSON.parse(localStorage.getItem(testimonialStorageKey)) || [];
+  } catch {
+    return [];
+  }
+}
+
+function saveTestimonials(testimonials) {
+  localStorage.setItem(testimonialStorageKey, JSON.stringify(testimonials));
+}
+
+function renderTestimonials() {
+  if (!testimonialList) {
+    return;
+  }
+
+  const testimonials = getTestimonials();
+  testimonialList.replaceChildren();
+
+  testimonials.forEach((testimonial) => {
+    const card = document.createElement("article");
+    const name = document.createElement("strong");
+    const comment = document.createElement("p");
+
+    card.className = "testimonial-card";
+    name.textContent = testimonial.name;
+    comment.textContent = testimonial.comment;
+
+    card.append(name, comment);
+    testimonialList.append(card);
+  });
+}
+
+testimonialForm?.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  const formData = new FormData(testimonialForm);
+  const name = formData.get("name")?.toString().trim();
+  const comment = formData.get("comment")?.toString().trim();
+
+  if (!name || !comment) {
+    return;
+  }
+
+  const testimonials = getTestimonials();
+  testimonials.unshift({ name, comment });
+  saveTestimonials(testimonials);
+  testimonialForm.reset();
+  renderTestimonials();
+});
+
+renderTestimonials();
