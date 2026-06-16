@@ -30,16 +30,20 @@ a {
 
 .site-header {
   position: sticky;
-  top: 0;
+  top: 14px;
   z-index: 20;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 18px;
+  width: min(920px, calc(100% - 32px));
   min-height: 58px;
-  padding: 9px clamp(16px, 5vw, 52px);
-  background: rgba(251, 252, 248, 0.94);
-  border-bottom: 1px solid var(--line);
+  margin: 14px auto 0;
+  padding: 9px 18px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(0, 74, 173, 0.14);
+  border-radius: 999px;
+  box-shadow: 0 16px 40px rgba(16, 24, 39, 0.08);
   backdrop-filter: blur(14px);
 }
 
@@ -66,7 +70,7 @@ a {
 .nav-links {
   gap: clamp(10px, 2.4vw, 22px);
   font-size: 0.84rem;
-  font-weight: 700;
+  font-weight: 400;
 }
 
 .nav-links a {
@@ -102,6 +106,7 @@ a {
   min-height: 34px;
   padding-inline: 14px;
   font-size: 0.84rem;
+  font-weight: 400;
 }
 
 .button-large {
@@ -311,51 +316,37 @@ h1 span {
   color: #002f7a;
 }
 
-@property --float-y {
-  syntax: "<length>";
-  inherits: false;
-  initial-value: 0px;
-}
-
-@property --pill-scale {
-  syntax: "<number>";
-  inherits: false;
-  initial-value: 1;
-}
-
 @keyframes pillFloat {
   0%,
   100% {
-    --float-y: 0px;
+    translate: 0 0;
   }
 
   50% {
-    --float-y: -8px;
+    translate: 0 -8px;
   }
 }
 
 .feature-pill {
-  --float-y: 0px;
-  --pill-scale: 1;
   position: absolute;
-  z-index: 0;
+  z-index: 2;
   padding: 10px 16px;
   border-radius: 999px;
   font-size: 0.86rem;
   font-weight: 800;
   box-shadow: 0 12px 30px rgba(16, 24, 39, 0.08);
-  transform: translateY(var(--float-y)) scale(var(--pill-scale));
+  scale: 1;
   animation: pillFloat 3s ease-in-out infinite;
-  transition: --pill-scale 0.2s ease, background-color 0.2s ease;
+  transition: scale 0.2s ease, background-color 0.2s ease;
 }
 
 .feature-pill:hover {
-  --pill-scale: 1.05;
+  scale: 1.05;
 }
 
 .pill-pink {
   top: 22%;
-  left: 12%;
+  left: 10%;
   color: #b42364;
   background: #ffe4ef;
   animation-delay: 0s;
@@ -366,8 +357,8 @@ h1 span {
 }
 
 .pill-green {
-  top: 62%;
-  left: 10%;
+  top: 56%;
+  left: 8%;
   color: #147d52;
   background: #dff8ea;
   animation-delay: 0.4s;
@@ -378,8 +369,8 @@ h1 span {
 }
 
 .pill-blue {
-  top: 24%;
-  right: 10%;
+  top: 21%;
+  right: 9%;
   color: #175cd3;
   background: #dbeafe;
   animation-delay: 0.8s;
@@ -390,8 +381,8 @@ h1 span {
 }
 
 .pill-orange {
-  right: 13%;
-  bottom: 22%;
+  right: 18%;
+  bottom: 14%;
   color: #b54708;
   background: #ffead5;
   animation-delay: 1.2s;
@@ -399,6 +390,30 @@ h1 span {
 
 .pill-orange:hover {
   background: #ffdcc0;
+}
+
+.pill-teal {
+  left: 26%;
+  bottom: 12%;
+  color: #0f766e;
+  background: #ccfbef;
+  animation-delay: 1.6s;
+}
+
+.pill-teal:hover {
+  background: #b8f4e5;
+}
+
+.pill-purple {
+  top: 56%;
+  right: 7%;
+  color: #6941c6;
+  background: #ebe9fe;
+  animation-delay: 2s;
+}
+
+.pill-purple:hover {
+  background: #ded9ff;
 }
 
 .home-band,
@@ -524,6 +539,16 @@ h1 span {
   line-height: 1.45;
 }
 
+.founder-details {
+  display: inline-block;
+  margin: 0.35rem 0 0.55rem;
+  padding-left: 1.1rem;
+  color: #666666;
+  font-size: 0.85rem;
+  line-height: 1.45;
+  text-align: left;
+}
+
 .founder-link {
   display: inline-flex;
   align-items: center;
@@ -538,7 +563,8 @@ h1 span {
 }
 
 .testimonials-section {
-  max-width: 760px;
+  width: min(980px, 100%);
+  max-width: 980px;
   margin: 64px auto 0;
   padding-top: 56px;
   text-align: center;
@@ -558,6 +584,13 @@ h1 span {
   font-size: 0.98rem;
 }
 
+.testimonials-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  align-items: start;
+}
+
 .testimonial-form {
   display: grid;
   gap: 14px;
@@ -573,10 +606,17 @@ h1 span {
   font-weight: 400;
 }
 
+.testimonial-message {
+  margin: 0;
+  color: #004aad;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-align: center;
+}
+
 .testimonial-list {
   display: grid;
   gap: 14px;
-  margin-top: 28px;
   text-align: left;
 }
 
@@ -618,8 +658,12 @@ h1 span {
   }
 
   .site-header {
-    position: relative;
+    top: 10px;
     flex-direction: column;
+    width: min(520px, calc(100% - 20px));
+    margin-top: 10px;
+    border-radius: 24px;
+    padding: 12px 14px;
   }
 
   .nav-links {
@@ -645,7 +689,8 @@ h1 span {
 
   .home-band,
   .split,
-  .founders-grid {
+  .founders-grid,
+  .testimonials-layout {
     grid-template-columns: 1fr;
   }
 

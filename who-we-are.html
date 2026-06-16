@@ -4,8 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Who We Are | Aim High Tutoring</title>
+  <link rel="icon" type="image/png" href="assets/logo.png">
+  <link rel="apple-touch-icon" href="assets/logo.png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <link rel="stylesheet" href="styles.css?v=8">
 </head>
 <body>
   <header class="site-header">
@@ -57,6 +60,9 @@
             </a>
           </h3>
           <p class="founder-program">University of Waterloo, Mathematics &amp; Finance</p>
+          <ul class="founder-details">
+            <li>Graduated from Rockridge in 2025</li>
+          </ul>
         </article>
 
         <article class="founder-card">
@@ -68,6 +74,9 @@
             </a>
           </h3>
           <p class="founder-program">University of British Columbia, Mechanical Engineering</p>
+          <ul class="founder-details">
+            <li>Graduated from Rockridge in 2025</li>
+          </ul>
         </article>
       </div>
     </section>
@@ -76,22 +85,25 @@
       <h2>Testimonials</h2>
       <p class="testimonials-intro">Share your experience with Aim High Tutoring.</p>
 
-      <form class="testimonial-form" data-testimonial-form>
-        <label>
-          Name
-          <input type="text" name="name" autocomplete="name" required>
-        </label>
-        <label>
-          Comment
-          <textarea name="comment" rows="4" required></textarea>
-        </label>
-        <button class="button button-black" type="submit">Leave Comment</button>
-      </form>
+      <div class="testimonials-layout">
+        <form class="testimonial-form" data-testimonial-form>
+          <label>
+            Name
+            <input type="text" name="name" autocomplete="name" required>
+          </label>
+          <label>
+            Comment
+            <textarea name="comment" rows="4" required></textarea>
+          </label>
+          <button class="button button-black" type="submit">Leave Comment</button>
+          <p class="testimonial-message" data-testimonial-message aria-live="polite"></p>
+        </form>
 
-      <div class="testimonial-list" data-testimonial-list aria-live="polite"></div>
+        <div class="testimonial-list" data-testimonial-list aria-live="polite"></div>
+      </div>
     </section>
   </main>
 
-  <script src="script.js"></script>
+  <script src="script.js?v=6"></script>
 </body>
 </html>
